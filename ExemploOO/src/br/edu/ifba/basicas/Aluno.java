@@ -1,6 +1,6 @@
 package br.edu.ifba.basicas;
 
-public class Aluno {
+public class Aluno implements Comparable<Aluno> {
 	
 	private int id;
 	private String nome;
@@ -59,6 +59,11 @@ public class Aluno {
 	@Override
 	public String toString() {
 		return "Aluno [id=" +id+ ", nome=" + nome + ", matricula=" + matricula + ", cpf=" + cpf + "]";
+	}
+	
+	@Override
+	public int compareTo(Aluno o) {
+		return this.nome.compareToIgnoreCase(o.getNome());
 	}
 	
 	
