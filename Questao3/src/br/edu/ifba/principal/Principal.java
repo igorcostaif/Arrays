@@ -19,13 +19,13 @@ public class Principal {
 		cc.adicionarPorPosicao(1, c3);
 		cc.listar();
 
-		System.out.println(cc.procurarPosicao(2));
+	/*	System.out.println(cc.procurarPosicao(2));
 		Conta conta = cc.procurarNome("hulano");
 		if (conta == null) {
 			System.out.println("Conta não encontrada");
 		} else {
 			System.out.println(conta);
-		}
+		} */
 
 		System.out.println();
 
