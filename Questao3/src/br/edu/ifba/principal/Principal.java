@@ -10,13 +10,17 @@ public class Principal {
 
 		Conta c = new Conta("Fulano", 20);
 		Conta c1 = new Conta("Beltrano", 10.5);
-		Conta c2 = new Conta("Sicrano", 15.5);
-		Conta c3 = new Conta("Coisinha", 0.5);
-		CadastroConta cc = new CadastroConta();
+	//	Conta c2 = new Conta("Sicrano", 15.5);
+	//	Conta c3 = new Conta("Coisinha", 0.5);
+		CadastroConta<Conta> cc = new CadastroConta<Conta>();
 		cc.adicionar(c);
 		cc.adicionar(c1);
-		cc.adicionar(c2);
-		cc.adicionarPorPosicao(1, c3);
+	//	cc.adicionar(c2);
+	//	cc.adicionarPorPosicao(1, c3);
+		cc.listar();
+		
+		cc.remover(1);
+		
 		cc.listar();
 
 	/*	System.out.println(cc.procurarPosicao(2));
@@ -26,6 +30,8 @@ public class Principal {
 		} else {
 			System.out.println(conta);
 		} */
+		
+		System.out.println("O vetor"+cc.tamanho());
 
 		System.out.println();
 

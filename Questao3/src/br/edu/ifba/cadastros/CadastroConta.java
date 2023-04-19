@@ -4,18 +4,20 @@ import java.util.Arrays;
 
 import br.edu.ifba.basica.Conta;
 
-public class CadastroConta {
 
-	Conta[] conta = new Conta[2];
+
+public class CadastroConta<T> {
+
+	Object[] conta = new Object[2];
 	int total = 0;
 
-	public void adicionar(Conta c) {
+	public void adicionar(T c) {
 		aumentaVetor();
 		conta[this.total] = c;
 		this.total++;
 	}
 
-	public void adicionarPorPosicao(int posicao, Conta cc) {
+	public void adicionarPorPosicao(int posicao, T cc) {
 		aumentaVetor();
 		if (!verificaPosicao(posicao)) {
 
@@ -40,7 +42,7 @@ public class CadastroConta {
 
 	}
 
-	public Conta procurarPosicao(int p) {
+	public Object procurarPosicao(int p) {
 
 		if (!verificaPosicao(p)) {
 
@@ -50,12 +52,12 @@ public class CadastroConta {
 		return this.conta[p];
 	}
 
-	public Conta procurarNome(String nome) {
-		Conta c = null;
+	public Object procurarNome(String nome) {
+		Object c = null;
 
 		for (int cont = 0; cont < this.total; cont++) {
 			// utilizado o método Equals da classe String para comparar Strings
-			if (nome.equalsIgnoreCase(this.conta[cont].getNome())) {
+			if (nome.equalsIgnoreCase(((Conta)this.conta[cont]).getNome())) {
 				c = this.conta[cont];
 			}
 
@@ -72,12 +74,34 @@ public class CadastroConta {
 		
 		if(this.total == this.conta.length){
 			
-			Conta[] newConta = new Conta[this.conta.length*2];
+			Object[] newObject = new Object[this.conta.length*2];
 			
-			System.arraycopy(this.conta, 0, newConta, 0, this.conta.length);
+			System.arraycopy(this.conta, 0, newObject, 0, this.conta.length);
 			
-			this.conta = newConta;
+			this.conta = newObject;
 		}
+		
+	}
+	
+	public int tamanho() {
+		return this.total;
+	}
+	
+	public void remover(int posicao) {
+		
+		if(!verificaPosicao(posicao)) {
+			throw new IllegalArgumentException("Posição inválida");
+		}
+		
+		aumentaVetor();
+		
+		for(int cont=posicao;cont<this.total;cont++) {
+			this.conta[cont] = this.conta[cont+1];
+		}
+		
+		this.conta[this.total-1] = null;
+		
+		this.total--;
 		
 	}
 
